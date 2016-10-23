@@ -9,7 +9,6 @@ def generate_string(lengthOfString):
         #print(random_string)
     return random_string
 
-
 def score_string(testString, goalString):
     '''Assigns a score based on how close testString is to goalString
     Return Type = (score, testString)
@@ -27,6 +26,21 @@ def score_string(testString, goalString):
         return(score)
 
 
+def infiniteMonkeyTheoremTest():
+    goalString = "methinks it is like a weasel"
+    score = 0
+
+    iteratorForStatus = 0
+    while (score != 100):
+        randomString = generate_string(len(goalString))
+        score = score_string(randomString, goalString)
+        #DEBUG
+        if(score > 50 or iteratorForStatus > 10000):
+            print("{} for {:.3}".format(randomString, score))
+            iteratorForStatus == 1
+        iteratorForStatus += 1
+    print("SUCCESS {} matches {:.2}".format(randomString, goalString))
+
 class generate_string_test(unittest.TestCase):
 
     def test_generate_string_correctLength(self):
@@ -43,6 +57,5 @@ class score_string_test(unittest.TestCase):
         self.assertEqual(score, 50)
 
 if __name__ == '__main__':
-    unittest.main()
-
-
+    #unittest.main()
+    infiniteMonkeyTheoremTest()

@@ -1,7 +1,14 @@
 import unittest
+import random
 
-def generate_string():
-    pass
+def generate_string(lengthOfString):
+    random_string = ''
+    alphabet = 'abcdefghijklmnopqrstuvwxy '
+    for _  in range(0,lengthOfString):
+        random_string += random.choice(alphabet)
+        #print(random_string)
+    return random_string
+
 
 def score_string(testString, goalString):
     '''Assigns a score based on how close testString is to goalString
@@ -19,10 +26,11 @@ def score_string(testString, goalString):
         score = (sum(correctCharactersBoolList)/len(correctCharactersBoolList))*100
         return(score)
 
+
 class generate_string_test(unittest.TestCase):
 
-    def test_generate_string_smoke(self):
-        generate_string()
+    def test_generate_string_correctLength(self):
+        self.assertEqual(len(generate_string(10)), 10)
 
 class score_string_test(unittest.TestCase):
 

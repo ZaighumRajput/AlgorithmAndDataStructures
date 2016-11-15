@@ -53,6 +53,21 @@ class test_parse_tree(unittest.TestCase):
         self.assertEqual(openTree.tree.get_left_child().getRootVal(), 3)
         self.assertEqual(openTree.tree.get_right_child().getRootVal(), 5)
 
+    def test_nested(self):
+        nestedExpression = parse_tree("(3+(4*5))")
+        self.assertEqual(nestedExpression.tree.getRootVal(), "+")
+        self.assertEqual(nestedExpression.tree.get_left_child().getRootVal(), 3)
+        self.assertEqual(nestedExpression.tree.get_right_child().getRootVal(), '*')
+        self.assertEqual(
+            nestedExpression.tree.get_right_child().get_right_child().getRootVal()
+                        , 5)
+        self.assertEqual(
+            nestedExpression.tree.get_right_child().get_left_child().getRootVal()
+                        , 4)
+
+
+
+
 if __name__ == '__main__':
     unittest.main()
 

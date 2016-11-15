@@ -18,6 +18,9 @@ class binary_tree():
     def getRootVal(self):
         return self.key
 
+    def setRootVal(self, obj):
+        self.key = obj
+
     def get_left_child(self):
         return (self.leftChild)
 
@@ -51,6 +54,12 @@ class Test_BinaryTree(unittest.TestCase):
     def test_insert_right(self):
         self.binaryTree.insert_right("Right1")
         self.assertEqual(self.binaryTree.get_right_child().getRootVal(),"Right1")
+
+    def test_insert_right(self):
+        self.binaryTree.insert_right("Right1")
+        self.binaryTree.insert_right("Right2")
+        self.assertEqual(self.binaryTree.get_right_child().getRootVal(),"Right1")
+
 
     def test_print(self):
         print(self.binaryTree)
